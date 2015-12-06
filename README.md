@@ -1,2 +1,2 @@
 # HexoBlogSource
-Hexo blog source code
+Hexo blog source code.
