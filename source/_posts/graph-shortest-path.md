@@ -85,7 +85,11 @@ SPFA(Shortest Path Faster Algorithm) 算法，在Bellman-Ford算法上加了一�
 > 考虑G中点(v0, v1, v2, ..., vn)的前K个，uv中经过前K个顶点的最短距离dist[k][u][v]可以分解为：
 > 1. 经过点k，那么dist[k][u][v] = dist[k-1][u][k] + dist[k-1][k][v]
 > 2. 不经过k，那么dist[k][u][v] = dist[k-1][u][v]
-到最终的
-> dist[u] = min(dist[u]
+> 递推式: dist[k][u][v] = min( dist[k-1][u][k] + dist[k-1][k][v], dist[k-1][u][v])
+有了上述递推公式，就可以自底向上进行动态规划求解。算法复杂度为O(|V|^3)。
+
+
 
 ## 最短路径的还原
+对于每次松弛操作，为每个顶点v记录father[v] = u，表示当前路径最后一步，u经e(u, v)到达v。
+在最短路径算法完成后，沿father[v]进行回溯就可以还原出整条路径。
